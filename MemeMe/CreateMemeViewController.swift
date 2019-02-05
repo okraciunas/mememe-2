@@ -138,14 +138,6 @@ class CreateMemeViewController: UIViewController, UIImagePickerControllerDelegat
         appDelegate.memes.append(meme)
     }
     
-    // MARK - Mostra o alerta personalizado
-    
-    private func showAlertAction(title: String, message: String) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: .default))
-        present(alertController, animated: true)
-    }
-    
     // MARK - Buttons methods
     
     @IBAction func pickAnImage(_ sender: Any) {

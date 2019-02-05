@@ -24,7 +24,7 @@ class SentMemesTableViewController: UIViewController, UITableViewDataSource, UIT
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
+        super.viewWillAppear(animated)
         
         self.memes = self.appDelegate.memes
         self.showTabBarController(memes: self.memes)
@@ -34,16 +34,9 @@ class SentMemesTableViewController: UIViewController, UITableViewDataSource, UIT
     // MARK - Mostrando/escondendo mensagem inicial
     
     private func showTabBarController(memes: [Meme]) {
-        if self.memes.count == 0 {
-            self.tableView.isHidden = true
-            self.tabBarController?.tabBar.isHidden = true
-            self.messageText.isHidden = false
-        }
-        else {
-            self.tableView.isHidden = false
-            self.tabBarController?.tabBar.isHidden = false
-            self.messageText.isHidden = true
-        }
+        self.tableView.isHidden = memes.count == 0
+        self.tabBarController?.tabBar.isHidden = memes.count == 0
+        self.messageText.isHidden = memes.count != 0
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
